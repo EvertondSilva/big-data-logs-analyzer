@@ -11,6 +11,7 @@ pyspark==3.5.0
 
 # API para acesso a dados do Kaggle
 kaggle==1.5.16
+kagglehub==0.4.0
 
 # Ferramentas de desenvolvimento
 pytest==7.4.3

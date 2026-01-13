@@ -24,9 +24,27 @@ services:
       retries: 5
     networks:
       - nasa-network
+  api:
+    build: .
+    container_name: nasa-api
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_USER: ${POSTGRES_USER}
+      DB_PASSWORD: ${POSTGRES_PASSWORD}
+      DB_NAME: ${POSTGRES_DB}
+    ports:
+      - "8002:8002"
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - nasa-network
+    command: python api.py
 
 volumes:
   postgres_data:
+
 
 networks:
   nasa-network:
