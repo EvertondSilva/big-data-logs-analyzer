@@ -22,3 +22,8 @@ mypy==1.7.1
 # Utilitários adicionais
 python-dotenv==1.0.0
 requests==2.31.0
+
+# Bibliotecas para visualização de dados
+dash==2.14.2
+plotly==5.18.0
+sqlalchemy==2.0.23

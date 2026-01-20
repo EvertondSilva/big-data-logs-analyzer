@@ -42,6 +42,26 @@ services:
       - nasa-network
     command: python api.py
 
+  dashboard:
+    build:
+      context: .
+      dockerfile: Dockerfile.dashboard
+    container_name: nasa-dashboard
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_USER: ${POSTGRES_USER}
+      DB_PASSWORD: ${POSTGRES_PASSWORD}
+      DB_NAME: ${POSTGRES_DB}
+    ports:
+      - "8050:8050"
+    depends_on:
+      - db
+      - api
+    networks:
+      - nasa-network
+
+
 volumes:
   postgres_data:
 
