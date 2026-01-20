@@ -74,50 +74,51 @@ Este projeto é um **pipeline ETL completo** para processamento e análise de lo
 ---
 
 ## 🏗 Arquitetura
-┌─────────────────┐
-│   Kaggle API    │
-│   (Download)    │
-└────────┬────────┘
-│
-▼
-┌─────────────────┐      ┌──────────────────┐
-│  ETL Download   │─────▶│  Data Files      │
-│  (etl_download) │      │  (.tsv format)   │
-└─────────────────┘      └────────┬─────────┘
-│
-▼
-┌─────────────────┐
-│   ETL Load      │
-│  (etl_load.py)  │
-└────────┬────────┘
-│
-▼
-┌─────────────────┐
-│   FastAPI       │
-│  (api.py)       │
-└────────┬────────┘
-│
-▼
-┌─────────────────┐
-│  PostgreSQL     │
-│  (logs table)   │
-└────────┬────────┘
-│
-┌───────────────┴───────────────┐
-│                               │
-▼                               ▼
-┌─────────────────┐           ┌─────────────────┐
-│  PySpark        │           │   Dashboard     │
-│  (spark_        │           │   (Dash/Plotly) │
-│   analysis.py)  │           │   Port 8050     │
-└────────┬────────┘           └─────────────────┘
-│
-▼
-┌─────────────────┐
-│  Analysis       │
-│  Tables         │
-│  (PostgreSQL)   │
-└─────────────────┘
+
+   Kaggle API    
+   (Download)    
+
+        │
+        ▼
+
+  ETL Download   ─────▶  Data Files      
+ (etl_download)         (.tsv format)   
+
+    |
+    ▼
+
+   ETL Load      
+  (etl_load.py)  
+
+
+    |
+    ▼
+
+   FastAPI       
+  (api.py)       
+
+
+    |
+    ▼
+
+  PostgreSQL     
+  (logs table) ─────▶   
+
+                               
+    |                               |
+    ▼                               ▼
+           
+  PySpark                      Dashboard     
+  (spark_                      (Dash/Plotly) 
+   analysis.py)                Port 8050     
+    
+
+    |
+    ▼
+
+  Analysis       
+  Tables         
+  (PostgreSQL)  
 ---
 
 ## 🛠 Tecnologias Utilizadas
