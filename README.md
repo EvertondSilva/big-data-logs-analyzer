@@ -25,9 +25,6 @@
 - [API Endpoints](#-api-endpoints)
 - [Dashboard](#-dashboard)
 - [Análises PySpark](#-análises-pyspark)
-- [Contribuindo](#-contribuindo)
-- [Licença](#-licença)
-- [Contato](#-contato)
 
 ---
 
