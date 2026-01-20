@@ -122,9 +122,3 @@ Antes de começar, certifique-se de ter instalado:
 
 ---
 
-## 🚀 Instalação
-
-### 1. Clone o repositório
-```bash
-git clone https://github.com/seu-usuario/nasa-etl-pipeline.git
-cd nasa-etl-pipeline
