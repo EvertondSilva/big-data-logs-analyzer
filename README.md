@@ -74,3 +74,89 @@ Este projeto é um **pipeline ETL completo** para processamento e análise de lo
 ---
 
 ## 🏗 Arquitetura
+┌─────────────────┐
+│   Kaggle API    │
+│   (Download)    │
+└────────┬────────┘
+│
+▼
+┌─────────────────┐      ┌──────────────────┐
+│  ETL Download   │─────▶│  Data Files      │
+│  (etl_download) │      │  (.tsv format)   │
+└─────────────────┘      └────────┬─────────┘
+│
+▼
+┌─────────────────┐
+│   ETL Load      │
+│  (etl_load.py)  │
+└────────┬────────┘
+│
+▼
+┌─────────────────┐
+│   FastAPI       │
+│  (api.py)       │
+└────────┬────────┘
+│
+▼
+┌─────────────────┐
+│  PostgreSQL     │
+│  (logs table)   │
+└────────┬────────┘
+│
+┌───────────────┴───────────────┐
+│                               │
+▼                               ▼
+┌─────────────────┐           ┌─────────────────┐
+│  PySpark        │           │   Dashboard     │
+│  (spark_        │           │   (Dash/Plotly) │
+│   analysis.py)  │           │   Port 8050     │
+└────────┬────────┘           └─────────────────┘
+│
+▼
+┌─────────────────┐
+│  Analysis       │
+│  Tables         │
+│  (PostgreSQL)   │
+└─────────────────┘
+---
+
+## 🛠 Tecnologias Utilizadas
+
+### **Backend & Data Processing**
+- **Python 3.11** - Linguagem principal
+- **PySpark 3.5.0** - Processamento distribuído de dados
+- **FastAPI** - API REST de alta performance
+- **PostgreSQL 15** - Banco de dados relacional
+- **SQLAlchemy** - ORM e conexões de banco
+- **Pandas** - Manipulação de dados
+
+### **Frontend & Visualização**
+- **Dash 2.14.2** - Framework para dashboards interativos
+- **Plotly** - Biblioteca de gráficos interativos
+
+### **DevOps & Infra**
+- **Docker & Docker Compose** - Containerização
+- **Kaggle API** - Download automático de datasets
+
+### **Outras**
+- **python-dotenv** - Gerenciamento de variáveis de ambiente
+- **psycopg2** - Driver PostgreSQL
+
+---
+
+## 📦 Pré-requisitos
+
+Antes de começar, certifique-se de ter instalado:
+
+- **Docker** (versão 20.10+)
+- **Docker Compose** (versão 2.0+)
+- **Conta Kaggle** (para download do dataset)
+
+---
+
+## 🚀 Instalação
+
+### 1. Clone o repositório
+```bash
+git clone https://github.com/seu-usuario/nasa-etl-pipeline.git
+cd nasa-etl-pipeline
