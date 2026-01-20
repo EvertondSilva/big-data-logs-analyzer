@@ -21,10 +21,14 @@ DB_PASSWORD = os.getenv("POSTGRES_PASSWORD")
 # Modelo para o log
 class LogEntry(BaseModel):
     ip: str
-    timestamp: str
-    request: str
-    status_code: int
-    bytes: int
+    login_name: str
+    time: int
+    method: str
+    url: str
+    response: int
+    bytes_: int
+
+
 
 
 # Modelo para a lista de logs
@@ -101,9 +105,10 @@ async def ingest_logs(log_list: LogList):
         conn = get_db_connection()
         cursor = conn.cursor()
         insert_query = """
-        INSERT INTO logs (ip, login_name, time, method, url, response, bytes_)
+        INSERT INTO logs (ip, login_name, time, method, url, response, bytes)
         VALUES ( %s, %s, %s, %s, %s, %s, %s);
         """
+
         for log in log_list.logs:
             cursor.execute(
                 insert_query,

@@ -38,7 +38,7 @@ def parse_tsv_line(line: str, line_num: int = 0) -> Optional[Dict]:
                     "time": parts[2].strip().strip('"'),
                     "method": parts[3].strip().strip('"'),
                     "url": parts[4].strip().strip('"'),
-                    "status_code": int(parts[5].strip()),
+                    "response": int(parts[5].strip()),
                     "bytes_": int(parts[6].strip()),
                 }
                 if line_num <= 3:
@@ -64,7 +64,7 @@ def parse_tsv_line(line: str, line_num: int = 0) -> Optional[Dict]:
                 "time": parts[2].strip().strip('"'),
                 "method": parts[3].strip().strip('"'),
                 "url": parts[4].strip().strip('"'),
-                "status_code": int(parts[5].strip()),
+                "response": int(parts[5].strip()),
                 "bytes_": int(parts[6].strip()),
             }
         except ValueError as e:
@@ -86,7 +86,7 @@ def parse_tsv_line(line: str, line_num: int = 0) -> Optional[Dict]:
                     "time": int(parts[2].strip().strip('"')),
                     "method": parts[3].strip().strip('"'),
                     "url": parts[4].strip().strip('"'),
-                    "status_code": int(parts[5].strip()),
+                    "response": int(parts[5].strip()),
                     "bytes_": int(parts[6].strip()),
                 }
             except (ValueError, IndexError) as e:
