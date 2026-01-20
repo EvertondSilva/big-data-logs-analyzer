@@ -76,15 +76,15 @@ Este projeto é um **pipeline ETL completo** para processamento e análise de lo
 ## 🏗 Arquitetura
 
 Componentes:
-Kaggle API: Download automático do dataset
-ETL Download: Script Python para baixar dados
-Data Files: Arquivos .tsv (3.4M registros)
-ETL Load: Parser e carga em batch
-FastAPI: API REST (porta 8002)
-PostgreSQL: Banco de dados principal
-PySpark Analysis: Processamento distribuído
-Dashboard: Visualização interativa (porta 8050)
-Analysis Tables: Resultados das análises
+- Kaggle API: Download automático do dataset
+- ETL Download: Script Python para baixar dados
+- Data Files: Arquivos .tsv (3.4M registros)
+- ETL Load: Parser e carga em batch
+- FastAPI: API REST (porta 8002)
+- PostgreSQL: Banco de dados principal
+- PySpark Analysis: Processamento distribuído
+- Dashboard: Visualização interativa (porta 8050)
+- Analysis Tables: Resultados das análises
 
 ---
 
