@@ -60,9 +60,11 @@ def create_table_if_not_exists():
     CREATE TABLE IF NOT EXISTS logs (
         id SERIAL PRIMARY KEY,
         ip VARCHAR(255),
-        timestamp VARCHAR(255),
-        request TEXT,
-        status_code INTEGER,
+        login_name VARCHAR(255),
+        time INTEGER,
+        method VARCHAR(255),
+        url VARCHAR(255),
+        response INTEGER,
         bytes INTEGER
     );
     """
@@ -99,13 +101,21 @@ async def ingest_logs(log_list: LogList):
         conn = get_db_connection()
         cursor = conn.cursor()
         insert_query = """
-        INSERT INTO logs (ip, timestamp, request, status_code, bytes)
-        VALUES (%s, %s, %s, %s, %s);
+        INSERT INTO logs (ip, login_name, time, method, url, response, bytes_)
+        VALUES ( %s, %s, %s, %s, %s, %s, %s);
         """
         for log in log_list.logs:
             cursor.execute(
                 insert_query,
-                (log.ip, log.timestamp, log.request, log.status_code, log.bytes),
+                (
+                    log.ip,
+                    log.login_name,
+                    log.time,
+                    log.method,
+                    log.url,
+                    log.response,
+                    log.bytes_,
+                ),
             )
         conn.commit()
         cursor.close()
