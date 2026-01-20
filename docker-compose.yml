@@ -1,13 +1,7 @@
-
-version: '3.8'
-
-
 services:
-
   db:
+    image: postgres:15
     container_name: nasa-postgres-db
-
-    image: postgres:15-alpine
     environment:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
@@ -16,14 +10,16 @@ services:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
-
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
-      interval: 5s
-      timeout: 5s
-      retries: 5
     networks:
       - nasa-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+      start_period: 10s
+    restart: unless-stopped
+
   api:
     build: .
     container_name: nasa-api
@@ -33,6 +29,8 @@ services:
       DB_USER: ${POSTGRES_USER}
       DB_PASSWORD: ${POSTGRES_PASSWORD}
       DB_NAME: ${POSTGRES_DB}
+      KAGGLE_USERNAME: ${KAGGLE_USERNAME}
+      KAGGLE_KEY: ${KAGGLE_KEY}
     ports:
       - "8002:8002"
     depends_on:
@@ -40,7 +38,7 @@ services:
         condition: service_healthy
     networks:
       - nasa-network
-    command: python api.py
+    restart: unless-stopped
 
   dashboard:
     build:
@@ -56,16 +54,14 @@ services:
     ports:
       - "8050:8050"
     depends_on:
-      - db
       - api
     networks:
       - nasa-network
-
-
-volumes:
-  postgres_data:
-
+    restart: unless-stopped
 
 networks:
   nasa-network:
     driver: bridge
+
+volumes:
+  postgres_data:

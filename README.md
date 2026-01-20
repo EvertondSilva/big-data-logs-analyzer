@@ -5,7 +5,6 @@
 [![Docker](https://img.shields.io/badge/Docker-Enabled-2496ED.svg)](https://www.docker.com/)
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15-336791.svg)](https://www.postgresql.org/)
 [![Dash](https://img.shields.io/badge/Dash-2.14.2-00D4FF.svg)](https://plotly.com/dash/)
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
 > **Pipeline completo de ETL e análise de logs de acesso da NASA (Julho 1995) usando PySpark, PostgreSQL e Dashboard interativo com Dash/Plotly.**
 
