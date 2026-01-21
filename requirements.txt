@@ -1,0 +1,29 @@
+# Dependências para o framework web FastAPI e servidor ASGI
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+
+# Driver para conexão com PostgreSQL
+psycopg2-binary==2.9.9
+
+# Bibliotecas para processamento de dados
+pandas==2.1.4
+pyspark==3.5.0
+
+# API para acesso a dados do Kaggle
+kaggle==1.5.16
+kagglehub==0.4.0
+
+# Ferramentas de desenvolvimento
+pytest==7.4.3
+black==23.11.0
+flake8==6.1.0
+mypy==1.7.1
+
+# Utilitários adicionais
+python-dotenv==1.0.0
+requests==2.31.0
+
+# Bibliotecas para visualização de dados
+dash==2.14.2
+plotly==5.18.0
+sqlalchemy==2.0.23
