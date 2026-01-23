@@ -10,10 +10,14 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # Copiar dashboard
 COPY Dashboard/dashboard.py .
+COPY kaggle/etl_load.py ./etl_load.py
+COPY PySpark/spark_analysis.py ./spark_analysis.py
+
 COPY .env .
 
 # Expor porta
 EXPOSE 8050
+
 
 # Rodar dashboard
 CMD ["python", "dashboard.py"]
